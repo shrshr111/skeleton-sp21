@@ -21,6 +21,7 @@ public class Collatz {
             System.out.print(n + " ");
             n = nextNumber(n);
             if(n == 1){
+                System.out.print(n);
                 break;
             }
         }
