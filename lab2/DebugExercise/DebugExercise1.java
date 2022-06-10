@@ -6,16 +6,17 @@ package DebugExercise;
  */
 public class DebugExercise1 {
     public static int divideThenRound(int top, int bottom) {
-        float quotient = top / bottom;
+        int quotient = top / bottom;
         int result;
 
-        if (bottom != 0 ) {
-
+        if ( quotient >= 0 ) {
             result = Math.round(quotient);
             return result;
         }
         else {
-            return 0;
+            result = Math.round(quotient);
+            return result - 1;
+
         }
     }
 
@@ -25,7 +26,7 @@ public class DebugExercise1 {
         int result = divideThenRound(t, b);
         System.out.println("round(" + t + "/" + b + ")=" + result);
 
-        int t2 = 9;
+        int t2 = -9;
         int b2 = 4;
         int result2 = divideThenRound(t2, b2);
         System.out.println("round(" + t2 + "/" + b2 + ")=" + result2);
