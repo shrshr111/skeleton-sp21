@@ -5,7 +5,7 @@ import java.util.Observable;
 
 
 /** The state of a game of 2048.
- *  @author TODO: YOUR NAME HERE
+ *  @author Zifan
  */
 public class Model extends Observable {
     /** Current contents of the board. */
@@ -109,10 +109,62 @@ public class Model extends Observable {
     public boolean tilt(Side side) {
         boolean changed;
         changed = false;
-
         // TODO: Modify this.board (and perhaps this.score) to account
         // for the tilt to the Side SIDE. If the board changed, set the
         // changed local variable to true.
+
+        // move North
+    board.setViewingPerspective(side);
+
+        for (int i = 0; i < board.size(); i++) {
+            for (int j = board.size() - 1; j >= 0; j--) {
+                Tile t = board.tile(i, j);
+                if (t != null) {
+                    //move tile(i,j) upwards
+                    int count = 0;
+                    for (int r = board.size() - 1; r > j; r--) {
+                        Tile t1 = board.tile(i, r);
+                        if (t1 == null) {
+                            count += 1;
+                        }
+                    }
+                    if (count > 0) {
+                        board.move(i, j + count, t);
+                        changed = true;
+                    }
+                }
+            }
+            // check if j+1 == j, then merge
+            for (int j = board.size() - 1; j >= 0; j--) {
+                Tile t = board.tile(i, j);
+                if (j - 1 >= 0 && j - 1 < board.size()) {
+                    Tile t2 = board.tile(i, j - 1);
+                    if (t != null && t2 != null && t2.value() == t.value()) {
+                        board.move(i, j, t2);
+                        changed = true;
+                        score += t2.value() * 2;
+                    }
+                }
+            }
+            for (int j = board.size() - 1; j >=0; j--) {
+                Tile t = board.tile(i, j);
+                if (t != null) {
+                    //move tile(i,j) upwards
+                    int count = 0;
+                    for (int r = board.size() - 1; r > j; r--) {
+                        Tile t1 = board.tile(i, r);
+                        if (t1 == null) {
+                            count += 1;
+                        }
+                    }
+                    if (count > 0) {
+                        board.move(i, j + count, t);
+                        changed = true;
+                    }
+                }
+            }
+        }
+board.setViewingPerspective(Side.NORTH);
 
         checkGameOver();
         if (changed) {
@@ -138,6 +190,14 @@ public class Model extends Observable {
      * */
     public static boolean emptySpaceExists(Board b) {
         // TODO: Fill in this function.
+
+        for (int i = 0; i < b.size(); i++) {
+            for (int j = 0; j < b.size(); j++) {
+                    if (b.tile(i, j) == null) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
@@ -148,6 +208,14 @@ public class Model extends Observable {
      */
     public static boolean maxTileExists(Board b) {
         // TODO: Fill in this function.
+        for (int i = 0; i < b.size(); i++) {
+            for (int j = 0; j < b.size(); j++) {
+                Tile t = b.tile(i, j);
+                if (t != null && t.value() == MAX_PIECE) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
@@ -159,9 +227,53 @@ public class Model extends Observable {
      */
     public static boolean atLeastOneMoveExists(Board b) {
         // TODO: Fill in this function.
+        for (int i = 0; i < b.size(); i++) {
+            for (int j = 0; j < b.size(); j++) {
+                Tile t = b.tile(i, j);
+                if (t == null) {
+                    return true;
+                } else {
+                    if (i + 1 >= 0 && i + 1 < b.size()) {
+                        Tile t1 = b.tile(i + 1, j);
+                        if(t1 == null){
+                            return true;
+                        }
+                        if (t1.value() == t.value()) {
+                            return true;
+                        }
+                    }
+                    if (i - 1 >= 0 && i - 1 < b.size()) {
+                        Tile t2 = b.tile(i - 1, j);
+                        if(t2 == null) {
+                            return true;
+                        }
+                        if (t2.value() == t.value()) {
+                            return true;
+                        }
+                    }
+                    if (j + 1 >= 0 && j + 1 < b.size()) {
+                        Tile t3 = b.tile(i, j + 1);
+                        if (t3 == null) {
+                            return true;
+                        }
+                        if (t3.value() == t.value()) {
+                            return true;
+                        }
+                    }
+                    if (j - 1 >= 0 && j - 1 < b.size()) {
+                        Tile t4 = b.tile(i, j - 1);
+                        if (t4 == null) {
+                            return true;
+                        }
+                        if (t4.value() == t.value()) {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
         return false;
     }
-
 
     @Override
      /** Returns the model as a string, used for debugging. */

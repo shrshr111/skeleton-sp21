@@ -11,6 +11,7 @@ import java.util.Random;
  * @author hug
  */
 public class Board implements Iterable<Tile> {
+    public Tile tile;
     /** Current contents of the board. */
     private Tile[][] values;
     /** Side that the board currently views as north. */
