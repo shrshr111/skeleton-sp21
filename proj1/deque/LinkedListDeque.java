@@ -113,11 +113,11 @@ public class LinkedListDeque<T> {
             return recursive(p.next, index - 1);
     }
 
-    public Iterator<T> iterator() {
+    //public Iterator<T> iterator() {
 
-    }
-    public boolean equals(Object o) {
+    //}
+    //public boolean equals(Object o) {
 
-    }
+    //}
 
 }
