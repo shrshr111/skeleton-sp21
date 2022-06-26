@@ -66,21 +66,23 @@ public class LinkedListDeque<T> {
     }
 
     public T removeFirst() {
-        IntNode p = sentinel;
-        IntNode head = new IntNode(p, p.next.item, p.next.next);
-        if (head != null) {
+        if(size > 0) {
+            IntNode p = sentinel;
+            IntNode head = p.next;
             p.next = head.next;
             head.next.prev = p;
+            size -= 1;
             return head.item;
         }
         return null;
     }
     public T removeLast() {
-        IntNode p = sentinel;
-        IntNode tail = new IntNode(p.prev.prev, p.prev.item, p);
-        if (tail != null) {
+        if(size > 0) {
+            IntNode p = sentinel;
+            IntNode tail = p.prev;
             p.prev = tail.prev;
             tail.prev.next = p;
+            size -= 1;
             return tail.item;
         }
         return null;
