@@ -35,7 +35,7 @@ public class ArrayDeque<T> {
         items[head] = item;
         size = size + 1;
     }
-    public void addlast(T item) {
+    public void addLast(T item) {
         if (size > 0) {
             if (size == items.length) {
                 resize(size * 1000);

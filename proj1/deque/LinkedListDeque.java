@@ -1,9 +1,5 @@
 package deque;
 
-import afu.org.checkerframework.checker.igj.qual.I;
-import jh61b.junit.In;
-import org.apache.commons.collections.set.PredicatedSet;
-
 public class LinkedListDeque<T> {
     public class IntNode {
 
