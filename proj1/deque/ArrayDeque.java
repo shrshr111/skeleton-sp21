@@ -93,12 +93,18 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
             }
             size = size - 1;
             if (items.length > 4 * size) {
-                T[] a = (T[]) new Object[items.length/4];
-                for (int i = 0; i < size; i++) {
-                    a[i] = get(i);
+                T[] a = (T[]) new Object[items.length / 4];
+                if (size > 0) {
+                    for (int i = 0; i < size; i++) {
+                        a[i] = get(i);
+                    }
+                    tail = size - 1;
+                }
+                else {
+                    tail = 0;
                 }
                 head = 0;
-                tail = size - 1;
+                items = a;
             }
             return item;
         }
@@ -116,12 +122,18 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
             }
             size = size - 1;
             if (items.length > 4 * size) {
-                T[] a = (T[]) new Object[items.length/4];
-                for (int i = 0; i < size; i++) {
-                    a[i] = get(i);
+                T[] a = (T[]) new Object[items.length / 4];
+                if (size > 0) {
+                    for (int i = 0; i < size; i++) {
+                        a[i] = get(i);
+                    }
+                    tail = size - 1;
+                }
+                else {
+                    tail = 0;
                 }
                 head = 0;
-                tail = size - 1;
+                items = a;
             }
             return item;
         }
@@ -178,7 +190,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
             return false;
         }
         for (int i = 0; i < size; i++) {
-            if (! this.get(i).equals(other.get(i))) {
+            if (!this.get(i).equals(other.get(i))) {
                 return false;
             }
         }
