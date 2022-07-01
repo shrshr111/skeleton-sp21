@@ -19,7 +19,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         tail = 0;
     }
 
-    public void resize(int capacity) {
+    private void resize(int capacity) {
         T[] a = (T[]) new Object[capacity];
         System.arraycopy(items, 0, a, 0, size);
         items = a;
@@ -136,7 +136,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
     private class ArrayIterator implements Iterator<T> {
         private int wizPos;
 
-        public ArrayIterator() {
+        private ArrayIterator() {
             wizPos = 0;
         }
         @Override
@@ -161,7 +161,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         if (this == o) {
             return true;
         }
-        ArrayDeque<T> other = (ArrayDeque<T>) o;
+        Deque<T> other = (Deque<T>) o;
         if (other.size() != this.size()) {
             return false;
         }

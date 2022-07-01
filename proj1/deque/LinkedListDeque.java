@@ -6,7 +6,7 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
         T item;
         IntNode next;
 
-        public IntNode(IntNode p, T i, IntNode n) {
+        IntNode(IntNode p, T i, IntNode n) {
             prev = p;
             item = i;
             next = n;
@@ -145,7 +145,7 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
         if (this == o) {
             return true;
         }
-        LinkedListDeque<T> other = (LinkedListDeque<T>) o;
+        Deque<T> other = (Deque<T>) o;
         if (other.size() != this.size()) {
             return false;
         }
