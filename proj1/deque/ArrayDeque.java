@@ -1,7 +1,7 @@
 package deque;
 import java.util.Iterator;
 
-public class ArrayDeque<T> implements Deque<T> {
+public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
 
     private T[] items;
     private int size;
@@ -24,7 +24,7 @@ public class ArrayDeque<T> implements Deque<T> {
         System.arraycopy(items, 0, a, 0, size);
         items = a;
     }
-@Override
+    @Override
     public void addFirst(T item) {
         if (size > 0) {
             if (size == items.length) {
@@ -39,7 +39,7 @@ public class ArrayDeque<T> implements Deque<T> {
         items[head] = item;
         size = size + 1;
     }
-@Override
+    @Override
     public void addLast(T item) {
         if (size > 0) {
             if (size == items.length) {
@@ -61,11 +61,11 @@ public class ArrayDeque<T> implements Deque<T> {
   //      }
     //    return false;
    // }
-@Override
+    @Override
     public int size() {
         return size;
     }
-@Override
+    @Override
     public void printDeque() {
         if (head < tail) {
             for (int i = head; i <= tail; i++) {
@@ -81,7 +81,7 @@ public class ArrayDeque<T> implements Deque<T> {
         }
         System.out.println();
     }
-@Override
+    @Override
     public T removeFirst() {
         if (size > 0) {
             T item = items[head];
@@ -96,7 +96,7 @@ public class ArrayDeque<T> implements Deque<T> {
         }
         return null;
     }
-@Override
+    @Override
     public T removeLast() {
         if (size > 0) {
             T item = items[tail];
@@ -111,7 +111,7 @@ public class ArrayDeque<T> implements Deque<T> {
         }
         return null;
     }
-@Override
+    @Override
     public T get(int index) {
         if (head <= tail) {
             if (index + head > tail) {
@@ -119,17 +119,16 @@ public class ArrayDeque<T> implements Deque<T> {
             }
             return items[index + head];
         } else {
-            int new_index = index + head;
-            if (new_index >= items.length) {
-                new_index = new_index - items.length;
+            int newindex = index + head;
+            if (newindex >= items.length) {
+                newindex = newindex - items.length;
             }
-            if (new_index > tail) {
+            if (newindex > tail) {
                 return null;
             }
-            return items[new_index];
+            return items[newindex];
         }
     }
-@Override
     public Iterator<T> iterator() {
         return new ArrayIterator();
     }
@@ -140,20 +139,20 @@ public class ArrayDeque<T> implements Deque<T> {
         public ArrayIterator() {
             wizPos = 0;
         }
-
+        @Override
         public boolean hasNext() {
             return wizPos < size;
         }
-
+        @Override
         public T next() {
             T returnItem = items[wizPos];
             wizPos += 1;
             return returnItem;
         }
     }
-@Override
+
     public boolean equals(Object o) {
-        if (!(o instanceof ArrayDeque)) {
+        if (!(o instanceof Deque)) {
             return false;
         }
         if (o == null) {

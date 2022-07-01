@@ -9,13 +9,13 @@ public class MaxArrayDeque<T> extends ArrayDeque<T> {
         compare = c;
     }
     public T max() {
-        if(super.isEmpty()){
+        if (super.isEmpty()) {
             return null;
         }
         int size = super.size();
         T max = super.get(0);
-        for(int i = 1; i < size; i++){
-            if(compare.compare(max, super.get(i)) < 0){
+        for (int i = 1; i < size; i++) {
+            if (compare.compare(max, super.get(i)) < 0) {
                 max = super.get(i);
             }
         }
