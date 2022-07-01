@@ -92,6 +92,9 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
                 }
             }
             size = size - 1;
+            if (size < items.length / 4) {
+                resize(items.length / 4);
+            }
             return item;
         }
         return null;
@@ -107,6 +110,9 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
                 }
             }
             size = size - 1;
+            if (size < items.length / 4) {
+                resize(items.length / 4);
+            }
             return item;
         }
         return null;
@@ -122,9 +128,9 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
             int newindex = index + head;
             if (newindex >= items.length) {
                 newindex = newindex - items.length;
-            }
-            if (newindex > tail) {
-                return null;
+                if (newindex > tail) {
+                    return null;
+                }
             }
             return items[newindex];
         }
@@ -150,12 +156,8 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
             return returnItem;
         }
     }
-
     public boolean equals(Object o) {
         if (!(o instanceof Deque)) {
-            return false;
-        }
-        if (o == null) {
             return false;
         }
         if (this == o) {
@@ -173,4 +175,3 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         return true;
     }
 }
-
