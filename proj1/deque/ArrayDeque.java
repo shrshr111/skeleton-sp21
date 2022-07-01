@@ -13,7 +13,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
 
     public ArrayDeque() {
 
-        items = (T[]) new Object[1000];
+        items = (T[]) new Object[64];
         size = 0;
         head = 0;
         tail = 0;
@@ -32,7 +32,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
     public void addFirst(T item) {
         if (size > 0) {
             if (size == items.length) {
-                resize(size * 1000);
+                resize(size * 2);
             }
             if (head == 0) {
                 head = head + items.length - 1;
@@ -47,7 +47,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
     public void addLast(T item) {
         if (size > 0) {
             if (size == items.length) {
-                resize(size * 1000);
+                resize(size * 2);
             }
             if (tail == items.length - 1) {
                 tail = tail - items.length + 1;
