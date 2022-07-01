@@ -1,4 +1,5 @@
 package deque;
+import java.util.Iterator;
 
 public class ArrayDeque<T> implements Deque<T> {
 
@@ -128,7 +129,7 @@ public class ArrayDeque<T> implements Deque<T> {
             return items[new_index];
         }
     }
-
+@Override
     public Iterator<T> iterator() {
         return new ArrayIterator();
     }
@@ -150,7 +151,7 @@ public class ArrayDeque<T> implements Deque<T> {
             return returnItem;
         }
     }
-
+@Override
     public boolean equals(Object o) {
         if (!(o instanceof ArrayDeque)) {
             return false;
