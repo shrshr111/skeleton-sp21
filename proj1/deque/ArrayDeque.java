@@ -92,6 +92,14 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
                 }
             }
             size = size - 1;
+            if (items.length > 4 * size) {
+                T[] a = (T[]) new Object[items.length/4];
+                for (int i = 0; i < size; i++) {
+                    a[i] = get(i);
+                }
+                head = 0;
+                tail = size - 1;
+            }
             return item;
         }
         return null;
@@ -107,6 +115,14 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
                 }
             }
             size = size - 1;
+            if (items.length > 4 * size) {
+                T[] a = (T[]) new Object[items.length/4];
+                for (int i = 0; i < size; i++) {
+                    a[i] = get(i);
+                }
+                head = 0;
+                tail = size - 1;
+            }
             return item;
         }
         return null;
@@ -145,7 +161,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         }
         @Override
         public T next() {
-            T returnItem = items[wizPos];
+            T returnItem = get(wizPos);
             wizPos += 1;
             return returnItem;
         }
@@ -162,7 +178,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
             return false;
         }
         for (int i = 0; i < size; i++) {
-            if (this.get(i) != other.get(i)) {
+            if (! this.get(i).equals(other.get(i))) {
                 return false;
             }
         }
