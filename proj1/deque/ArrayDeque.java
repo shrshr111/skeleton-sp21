@@ -1,13 +1,16 @@
 package deque;
 
-public class ArrayDeque<T> {
+public class ArrayDeque<T> implements Deque<T> {
 
     private T[] items;
     private int size;
     private int head;
     private int tail;
 
-    public ArrayDeque(){
+
+
+
+    public ArrayDeque() {
 
         items = (T[]) new Object[1000];
         size = 0;
@@ -20,7 +23,7 @@ public class ArrayDeque<T> {
         System.arraycopy(items, 0, a, 0, size);
         items = a;
     }
-
+@Override
     public void addFirst(T item) {
         if (size > 0) {
             if (size == items.length) {
@@ -35,6 +38,7 @@ public class ArrayDeque<T> {
         items[head] = item;
         size = size + 1;
     }
+@Override
     public void addLast(T item) {
         if (size > 0) {
             if (size == items.length) {
@@ -49,15 +53,18 @@ public class ArrayDeque<T> {
         items[tail] = item;
         size = size + 1;
     }
-    public boolean isEmpty() {
-        if (size == 0) {
-            return true;
-        }
-        return false;
-    }
+
+    //public boolean isEmpty() {
+      //  if (size == 0) {
+//            return true;
+  //      }
+    //    return false;
+   // }
+@Override
     public int size() {
         return size;
     }
+@Override
     public void printDeque() {
         if (head < tail) {
             for (int i = head; i <= tail; i++) {
@@ -73,6 +80,7 @@ public class ArrayDeque<T> {
         }
         System.out.println();
     }
+@Override
     public T removeFirst() {
         if (size > 0) {
             T item = items[head];
@@ -87,6 +95,7 @@ public class ArrayDeque<T> {
         }
         return null;
     }
+@Override
     public T removeLast() {
         if (size > 0) {
             T item = items[tail];
@@ -101,27 +110,67 @@ public class ArrayDeque<T> {
         }
         return null;
     }
+@Override
     public T get(int index) {
         if (head <= tail) {
-            if(index + head > tail){
+            if (index + head > tail) {
                 return null;
             }
             return items[index + head];
         } else {
             int new_index = index + head;
-            if(new_index >= items.length){
+            if (new_index >= items.length) {
                 new_index = new_index - items.length;
             }
-            if(new_index > tail){
+            if (new_index > tail) {
                 return null;
             }
             return items[new_index];
         }
     }
-    //public Iterator<T> iterator() {
 
-    //}
-    //public boolean equals(Object o) {
+    public Iterator<T> iterator() {
+        return new ArrayIterator();
+    }
 
-    //}
+    private class ArrayIterator implements Iterator<T> {
+        private int wizPos;
+
+        public ArrayIterator() {
+            wizPos = 0;
+        }
+
+        public boolean hasNext() {
+            return wizPos < size;
+        }
+
+        public T next() {
+            T returnItem = items[wizPos];
+            wizPos += 1;
+            return returnItem;
+        }
+    }
+
+    public boolean equals(Object o) {
+        if (!(o instanceof ArrayDeque)) {
+            return false;
+        }
+        if (o == null) {
+            return false;
+        }
+        if (this == o) {
+            return true;
+        }
+        ArrayDeque<T> other = (ArrayDeque<T>) o;
+        if (other.size() != this.size()) {
+            return false;
+        }
+        for (int i = 0; i < size; i++) {
+            if (this.get(i) != other.get(i)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
+
