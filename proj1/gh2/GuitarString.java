@@ -20,8 +20,8 @@ public class GuitarString {
         //       better accuracy, use the Math.round() function before casting.
         //       Your should initially fill your buffer array with zeros.
         buffer = new LinkedListDeque();
-         for (int i = 0; i < Math.round(SR / frequency); i++) {
-             buffer.addFirst(0.0);
+        for (int i = 0; i < Math.round(SR / frequency); i++) {
+            buffer.addFirst(0.0);
         }
     }
 
