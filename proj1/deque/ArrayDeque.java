@@ -8,9 +8,6 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
     private int head;
     private int tail;
 
-
-
-
     public ArrayDeque() {
 
         items = (T[]) new Object[32];
