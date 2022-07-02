@@ -13,7 +13,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
 
     public ArrayDeque() {
 
-        items = (T[]) new Object[64];
+        items = (T[]) new Object[32];
         size = 0;
         head = 0;
         tail = 0;
