@@ -1,0 +1,59 @@
+InsertRandomSpeedTest
+length of string = 5
+no. of string = 1000
+
+class bstmap.ULLMap: 0.01 sec
+class bstmap.BSTMap: 0.00 sec
+Java's Built-in TreeMap: 0.00 sec
+Java's Built-in HashMap: 0.00 sec
+
+no. of string = 5000
+
+class bstmap.ULLMap: 0.08 sec
+class bstmap.BSTMap: 0.00 sec
+Java's Built-in TreeMap: 0.00 sec
+Java's Built-in HashMap: 0.00 sec
+
+no. of string = 10000
+
+class bstmap.ULLMap: 0.33 sec
+class bstmap.BSTMap: 0.01 sec
+Java's Built-in TreeMap: 0.00 sec
+Java's Built-in HashMap: 0.01 sec
+
+no. of string = 20000
+
+class bstmap.ULLMap: 1.23 sec
+class bstmap.BSTMap: 0.01 sec
+Java's Built-in TreeMap: 0.01 sec
+Java's Built-in HashMap: 0.00 sec
+
+InsertOrderSpeedTest
+
+no. of string = 1000
+
+class bstmap.ULLMap: 0.03 sec
+class bstmap.BSTMap: 0.02 sec
+Java's Built-in TreeMap: 0.01 sec
+Java's Built-in HashMap: 0.00 sec
+
+no. of string = 5000
+
+class bstmap.ULLMap: 0.18 sec
+class bstmap.BSTMap: 0.24 sec
+Java's Built-in TreeMap: 0.00 sec
+Java's Built-in HashMap: 0.01 sec
+
+no. of string = 10000
+
+class bstmap.ULLMap: 0.97 sec
+class bstmap.BSTMap: 1.05 sec
+Java's Built-in TreeMap: 0.01 sec
+Java's Built-in HashMap: 0.01 sec
+
+no. of string = 20000
+
+class bstmap.ULLMap: 9.15 sec
+class bstmap.BSTMap: 3.82 sec
+Java's Built-in TreeMap: 0.02 sec
+Java's Built-in HashMap: 0.01 sec
