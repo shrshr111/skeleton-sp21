@@ -70,7 +70,7 @@ public class BSTMap<K extends Comparable<K>,V> implements Map61B<K, V> {
             root = put(key, value, root);
         }
     }
-    public Node put(K key, V value, Node x) {
+    private Node put(K key, V value, Node x) {
         if (x == null) {
            size += 1;
            return new Node(key,value);
@@ -91,10 +91,10 @@ public class BSTMap<K extends Comparable<K>,V> implements Map61B<K, V> {
         }
     }
 
-    public List<K> printInOrder() {
+    public void printInOrder() {
         List<K> res = new ArrayList<>();
         inOrderTraversal(root, res);
-        return res;
+        System.out.println(Arrays.toString(res.toArray()));
     }
 
     private void inOrderTraversal(Node x, List<K> res){
