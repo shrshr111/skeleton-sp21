@@ -19,6 +19,7 @@ public class BSTMap<K extends Comparable<K>,V> implements Map61B<K, V> {
 
     public BSTMap() {
         size = 0;
+        root = null;
     }
     @Override
     public void clear() {
@@ -28,12 +29,26 @@ public class BSTMap<K extends Comparable<K>,V> implements Map61B<K, V> {
     @Override
     public boolean containsKey(K key) {
         if (key == null) {
-            throw new IllegalArgumentException("argument to containsKey() is null");
+            return false;
         }
-        if (get(key) != null) {
+        if (find(key, root) != null) {
             return true;
         } else {
             return false;
+        }
+    }
+
+    private Node find(K key, Node x){
+        if (x == null) {
+            return null;
+        }
+        int cmp = key.compareTo(x.key);
+        if (cmp < 0) {
+            return find(key, x.left);
+        } else if (cmp > 0) {
+            return find(key, x.right);
+        } else {
+            return x;
         }
     }
     @Override
@@ -42,7 +57,7 @@ public class BSTMap<K extends Comparable<K>,V> implements Map61B<K, V> {
     }
     private V get(K key, Node x)  {
         if (key == null) {
-            throw new IllegalArgumentException("calls get() with a null key");
+            return null;
         }
         if (x == null) {
             return null;
@@ -64,8 +79,6 @@ public class BSTMap<K extends Comparable<K>,V> implements Map61B<K, V> {
     public void put(K key, V value) {
         if (key == null) {
             throw new IllegalArgumentException("calls put() with a null key!");
-        } else if (value == null) {
-            return;
         } else {
             root = put(key, value, root);
         }
@@ -78,12 +91,10 @@ public class BSTMap<K extends Comparable<K>,V> implements Map61B<K, V> {
         int cmp = key.compareTo(x.key);
         if (cmp < 0) {
             x.left = put(key,value,x.left);
-            size += 1;
             return x;
         }
         else if (cmp > 0) {
             x.right = put(key,value,x.right);
-            size += 1;
             return x;
         } else {
             x.value = value;
