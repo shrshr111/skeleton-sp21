@@ -1,0 +1,98 @@
+InsertRandomSpeedTest
+L = 10
+# strings = 1000
+class hashmap.ULLMap: 0.01 sec
+class hashmap.MyHashMap: 0.00 sec
+Java's Built-in HashMap: 0.00 sec
+
+# strings = 5000
+class hashmap.ULLMap: 0.81 sec
+class hashmap.MyHashMap: 0.01 sec
+Java's Built-in HashMap: 0.01 sec
+
+# strings = 10000
+class hashmap.ULLMap: 0.29 sec
+class hashmap.MyHashMap: 0.02 sec
+Java's Built-in HashMap: 0.02 sec
+
+# strings = 15000
+class hashmap.ULLMap: 0.67 sec
+class hashmap.MyHashMap: 0.02 sec
+Java's Built-in HashMap: 0.02 sec
+
+# strings = 20000
+class hashmap.ULLMap: 1.20 sec
+class hashmap.MyHashMap: 0.02 sec
+Java's Built-in HashMap: 0.01 sec
+
+InsertOrderSpeedTest
+# strings = 1000
+class hashmap.ULLMap: 0.02 sec
+class hashmap.MyHashMap: 0.01 sec
+Java's Built-in HashMap: 0.01 sec
+
+# strings = 5000
+class hashmap.ULLMap: 0.16 sec
+class hashmap.MyHashMap: 0.01 sec
+Java's Built-in HashMap: 0.01 sec
+
+# strings = 10000
+class hashmap.ULLMap: 0.57 sec
+class hashmap.MyHashMap: 0.02 sec
+Java's Built-in HashMap: 0.02 sec
+
+# strings = 15000
+class hashmap.ULLMap: 2.58 sec
+class hashmap.MyHashMap: 0.02 sec
+Java's Built-in HashMap: 0.02 sec
+
+# strings = 20000
+class hashmap.ULLMap: 7.51 sec
+class hashmap.MyHashMap: 0.02 sec
+Java's Built-in HashMap: 0.01 sec
+
+BucketsSpeedTest
+L = 10
+# strings 1000
+class hashmap.MyHashMapALBuckets: 0.01 sec
+class hashmap.MyHashMapLLBuckets: 0.00 sec
+class hashmap.MyHashMapTSBuckets: 0.01 sec
+class hashmap.MyHashMapHSBuckets: 0.00 sec
+class hashmap.MyHashMapPQBuckets: 0.00 sec
+# strings 5000
+class hashmap.MyHashMapALBuckets: 0.01 sec
+class hashmap.MyHashMapLLBuckets: 0.01 sec
+class hashmap.MyHashMapTSBuckets: 0.02 sec
+class hashmap.MyHashMapHSBuckets: 0.01 sec
+class hashmap.MyHashMapPQBuckets: 0.01 sec
+# strings 10000
+class hashmap.MyHashMapALBuckets: 0.01 sec
+class hashmap.MyHashMapLLBuckets: 0.01 sec
+class hashmap.MyHashMapTSBuckets: 0.01 sec
+class hashmap.MyHashMapHSBuckets: 0.01 sec
+class hashmap.MyHashMapPQBuckets: 0.01 sec
+# strings 50000
+class hashmap.MyHashMapALBuckets: 0.03 sec
+class hashmap.MyHashMapLLBuckets: 0.03 sec
+class hashmap.MyHashMapTSBuckets: 0.04 sec
+class hashmap.MyHashMapHSBuckets: 0.04 sec
+class hashmap.MyHashMapPQBuckets: 0.03 sec
+# strings 100000
+class hashmap.MyHashMapALBuckets: 0.06 sec
+class hashmap.MyHashMapLLBuckets: 0.06 sec
+class hashmap.MyHashMapTSBuckets: 0.15 sec
+class hashmap.MyHashMapHSBuckets: 0.16 sec
+class hashmap.MyHashMapPQBuckets: 0.10 sec
+# strings 500000
+class hashmap.MyHashMapALBuckets: 0.55 sec
+class hashmap.MyHashMapLLBuckets: 0.50 sec
+class hashmap.MyHashMapTSBuckets: 0.82 sec
+class hashmap.MyHashMapHSBuckets: 1.13 sec
+class hashmap.MyHashMapPQBuckets: 0.59 sec
+# strings 1000000
+class hashmap.MyHashMapALBuckets: 0.88 sec
+class hashmap.MyHashMapLLBuckets: 1.06 sec
+class hashmap.MyHashMapTSBuckets: 1.59 sec
+class hashmap.MyHashMapHSBuckets: 2.04 sec
+class hashmap.MyHashMapPQBuckets: 1.22 sec
+
